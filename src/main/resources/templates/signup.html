@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Customer Information Center - Sign Up</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<br>
+<div class="container-fluid">
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+
+
+	<h1>Create a New Account</h1>
+	<div class="form-group">
+	
+			<div>
+				<label> Username : </label>
+				<input type="text" th:field="*{username}" class="form-control" style="max-width: 45%;" />
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+			</div>
+			
+			<div>
+				<label> Password :</label>
+				<input type="password" th:field="*{password}" class="form-control" style="max-width: 45%;" />
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+			</div>
+			
+			<div>
+				<label> Re-type Password: </label> 
+				<input type="password" th:field="*{passwordCheck}" class="form-control" style="max-width: 45%;" />
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+			</div>
+			
+			<small class="form-text text-muted">Every new user gets the "USER" privilege.</small>
+			<br>
+			<div class="btn-group">
+			<input type="submit" class="btn btn-success" value="Create Account"></input>
+			<a href="/login" class="btn btn-info" style="margin-left: 25px">Back to Login Screen</a>
+			</div>
+			
+			</div>
+		</form>
+	</div>
+</body>
+</html>

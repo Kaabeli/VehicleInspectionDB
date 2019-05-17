@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+	integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+	crossorigin="anonymous"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Customer Information Center - Add Customer</title>
+</head>
+<body>
+
+
+	<div class="container-fluid">
+			<form th:object="${customer}" th:action="@{save}" action="#" method="post">
+		<h1>Add Customer Information</h1>
+			<div class="form-group">
+
+			<div class="form-group">
+				<label for="title">Customer
+					Name:</label> <input type="text" id="cusName" th:field="${customer.cusName}" class="form-control" style="max-width: 45%;" />
+			</div>
+
+			<div class="form-group">
+				<label for="vehModel">Car
+					Model:</label> <input type="text" id="vehModel" th:field="${customer.vehModel}" class="form-control" style="max-width: 45%;" />
+			</div>
+
+			<div class="form-group">
+				<label for="licenceNum">License
+					Plate:</label> <input type="text" id="licenceNum" th:field="${customer.licenceNum}" class="form-control" style="max-width: 45%;" />
+			</div>
+
+			<div class="form-group">
+				<label for="insDate">Last
+					Inspection Date:</label> <input type="date" id="insDate" th:field="${customer.insDate}" class="form-control" style="max-width: 45%;" />
+			</div>
+
+			<div class="form-group">
+				<label>Inspection Status</label> 
+				<select th:field="*{inspection}" class="form-control" style="max-width: 45%;">
+					<option th:each="inspection: ${inspections}" th:value="${inspection.inspid}" th:text="${inspection.name}"></option>
+				</select>
+			</div>
+			
+			<br>
+			<div class="btn-group">
+			<input class="btn btn-success" type="submit" value="Save"></input> 
+			<a href="/customerslist" class="btn btn-primary" style="margin-left: 25px">Back to Customer List</a>
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>

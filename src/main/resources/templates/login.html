@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Customer Information Center - Login</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<br>
+<div class="container-fluid">
+<form th:action="@{/login}" method="post">
+	<div class="form-group">
+	
+		<div class="alert alert-danger" th:if="${param.error}" style="max-width: 45%;">Invalid username and password.</div>
+		<div class="alert alert-warning" th:if="${param.logout}" style="max-width: 45%;">You have been logged out.</div>
+			
+			<div>
+				<label> User Name : </label>
+				<input type="text" name="username" class="form-control" style="max-width: 45%;" />
+			</div>
+			
+			<div>
+				<label> Password: </label>
+				<input type="password" name="password" class="form-control" style="max-width: 45%;" />
+				<small class="form-text text-muted">Please, don't share your password to anyone.</small>
+			</div>
+			<br>
+			
+			<div class="btn-group">
+				<input type="submit" value="Sign In" class="btn btn-success" />
+				<a th:href="@{/signup}" class="btn btn-info" style="margin-left: 25px;">Create a New Account</a>
+			</div>
+			
+		</div>
+</form>
+	<small class="form-text text-muted">For testing Admin privileges type "admin" as username and password.</small>
+</div>
+	
+
+	
+</body>
+</html>
